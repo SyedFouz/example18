@@ -54,6 +54,8 @@ public class ProjectSecurityConfig {
                 .authorizeHttpRequests((requests) -> requests.requestMatchers(mvcMatcherBuilder.pattern("/dashboard")).authenticated()
                         .requestMatchers(mvcMatcherBuilder.pattern("/displayMessages")).hasRole("ADMIN")
                         .requestMatchers(mvcMatcherBuilder.pattern("/closeMsg/**")).hasRole("ADMIN")
+                        .requestMatchers(mvcMatcherBuilder.pattern("/displayProfile")).authenticated()
+                        .requestMatchers(mvcMatcherBuilder.pattern("/updateProfile")).authenticated()
                         .requestMatchers(mvcMatcherBuilder.pattern("")).permitAll()
                         .requestMatchers(mvcMatcherBuilder.pattern("/")).permitAll()
                         .requestMatchers(mvcMatcherBuilder.pattern("/home")).permitAll()
@@ -81,12 +83,12 @@ public class ProjectSecurityConfig {
 
     }
 
-    @Bean
+ /*   @Bean
     public InMemoryUserDetailsManager userDetailsManager() {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         UserDetails user = User.withUsername("user").passwordEncoder(encoder::encode).password("12345").roles("USER").build();
 
         UserDetails admin = User.withUsername("admin").passwordEncoder(encoder::encode).password("12345").roles("ADMIN", "USER").build();
         return new InMemoryUserDetailsManager(user, admin);
-    }
+    }*/
 }

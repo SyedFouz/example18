@@ -1,7 +1,9 @@
 package com.example.example18.security;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EazySchoolPasswordEncoder extends BCryptPasswordEncoder {
 
     @Override
