@@ -127,10 +127,10 @@ public class AdminController {
             ,HttpSession session,@RequestParam(required = false) String error) {
         String errorMessage = null;
         ModelAndView modelAndView = new ModelAndView("course_students.html");
-        //Optional<Courses> courses = coursesRepository.findById(id);
-        //modelAndView.addObject("courses",courses.get());
+        Optional<Courses> courses = coursesRepository.findById(id);
+        modelAndView.addObject("courses",courses.get());
         modelAndView.addObject("person",new Person());
-        //session.setAttribute("courses",courses.get());
+        session.setAttribute("courses",courses.get());
         if(error != null) {
             errorMessage = "Invalid Email entered!!";
             modelAndView.addObject("errorMessage", errorMessage);
